@@ -1,0 +1,7 @@
+{
+  "name": "poc-ionic-share",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
