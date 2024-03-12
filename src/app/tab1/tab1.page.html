@@ -1,17 +1,83 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
+    <ion-title> Ionic Capacitor </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <ion-grid class="ion-margin-vertical">
+    <ion-list>
+      <ion-item>
+        <ion-row class="ion-justify-content-center ion-padding-vertical">
+          <ion-label class="ion-text-center ion-padding-bottom">
+            Packages used for the feature below:
+          </ion-label>
+          <ion-label class="ion-text-center ion-padding-bottom">
+            <a href="https://ionicframework.com/docs/native/filesystem"
+              >&#64;capacitor/filesystem</a
+            >: ^5.2.1
+          </ion-label>
+          <ion-label class="ion-text-center ion-padding-bottom">
+            <a href="https://ionicframework.com/docs/native/share"
+              >&#64;capacitor/share</a
+            >: ^5.0.7
+          </ion-label>
+        </ion-row>
+      </ion-item>
+      <ion-item-divider />
+      <ion-item>
+        <ion-row class="ion-justify-content-center ion-padding-vertical">
+          <ion-label class="ion-text-center ion-padding-bottom">
+            Open up Share feature with only text.
+          </ion-label>
+          <ion-button size="default" (click)="share('text')"
+            ><ion-icon slot="start" name="text-outline"></ion-icon> Text Only
+          </ion-button>
+        </ion-row>
+      </ion-item>
+      <ion-item-divider />
+      <ion-item>
+        <ion-row class="ion-justify-content-center ion-padding-vertical">
+          <ion-label class="ion-text-center ion-padding-bottom">
+            Select Image / Video first & then open up Share feature with it.
+            <ion-note>(Using web &lt;input&gt;)</ion-note>
+          </ion-label>
+          <ion-button size="default" (click)="uploadImgVid.click()"
+            ><ion-icon slot="start" name="images-outline"></ion-icon> Image /
+            Video Only
+          </ion-button>
+          <input
+            #uploadImgVid
+            class="ion-hide"
+            type="file"
+            accept="image/*, video/*"
+            [multiple]="true"
+            (change)="share('img/vid', $event)"
+            (click)="uploadClick($event)"
+          />
+        </ion-row>
+      </ion-item>
+      <ion-item-divider />
+      <ion-item>
+        <ion-row class="ion-justify-content-center ion-padding-vertical">
+          <ion-label class="ion-text-center ion-padding-bottom">
+            Select any File first & then open up Share feature with it.
+            <ion-note>(Using web &lt;input&gt;)</ion-note>
+          </ion-label>
+          <ion-button size="default" (click)="uploadFile.click()"
+            ><ion-icon slot="start" name="folder-outline"></ion-icon> Any File
+          </ion-button>
+          <input
+            #uploadFile
+            class="ion-hide"
+            type="file"
+            accept="*/*"
+            [multiple]="true"
+            (change)="share('file', $event)"
+            (click)="uploadClick($event)"
+          />
+        </ion-row>
+      </ion-item>
+    </ion-list>
+  </ion-grid>
 </ion-content>
